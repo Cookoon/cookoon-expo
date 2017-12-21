@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Cookoon Expo",
+    "description": "Recevons partout !",
+    "slug": "cookoon-expo",
+    "privacy": "public",
+    "sdkVersion": "24.0.0",
+    "platforms": ["ios", "android"],
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f5a623"
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
