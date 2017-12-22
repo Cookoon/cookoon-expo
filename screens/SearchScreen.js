@@ -3,15 +3,35 @@ import {
   Dimensions,
   Image,
   ScrollView,
-  StyleSheet,
+  View,
   Text,
-  View
+  TouchableOpacity,
+  StyleSheet
 } from 'react-native';
+import { SearchBar, Slider } from 'react-native-elements';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Recherche',
     header: null
+  };
+
+  state = {
+    address: '',
+    date: new Date(),
+    duration: 6,
+    isDateTimePickerVisible: false
+  };
+
+  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+
+  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+
+  _handleDatePicked = date => {
+    this.setState({ date });
+    console.log('A date has been picked: ', date);
+    this._hideDateTimePicker();
   };
 
   render() {
@@ -28,9 +48,43 @@ export default class SearchScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
+          <SearchBar
+            lightTheme
+            round
+            clearIcon
+            placeholder="Paris"
+            onChangeText={address => this.setState({ address })}
+            onClearText={() => this.setState({ address: '' })}
+            value={this.state.address}
+          />
+
+          <TouchableOpacity onPress={this._showDateTimePicker}>
+            <Text>Choisir Date</Text>
+          </TouchableOpacity>
+          <DateTimePicker
+            mode="datetime"
+            isVisible={this.state.isDateTimePickerVisible}
+            onConfirm={this._handleDatePicked}
+            onCancel={this._hideDateTimePicker}
+          />
+          <View
+            style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}
+          >
+            <Slider
+              minimumValue={1}
+              maximumValue={8}
+              step={1}
+              value={this.state.duration}
+              onValueChange={duration => this.setState({ duration })}
+            />
+          </View>
+
           <View style={styles.getStartedContainer}>
             <Text style={styles.getStartedText}>
-              Je cherche un cookoon à Paris le 24 décembre à 20h pour 6 heures
+              Je cherche un cookoon à {this.state.address || 'Paris'} le
+              {` ${this.state.date.getDate()}/${this.state.date.getMonth() +
+                1} à ${this.state.date.getHours()}h${this.state.date.getMinutes()} `}
+              pour {this.state.duration} heures
             </Text>
           </View>
         </ScrollView>
