@@ -1,50 +1,52 @@
 import React, { Component } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { AppLoading, Asset, Font } from 'expo';
+import { AppLoading, Asset, Constants, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
-import RootNavigation from './navigation/RootNavigation';
+
+import Colors from './src/constants/Colors';
+import Banner from './src/assets/images/banner.jpg';
+
+import RootNavigation from './src/navigation/RootNavigation';
 
 export default class App extends Component {
   state = {
     isLoadingComplete: false
   };
 
-  render() {
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
-      return (
-        <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
-        />
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          {Platform.OS === 'android' && (
-            <View style={styles.statusBarUnderlay} />
-          )}
-          <RootNavigation />
-        </View>
-      );
-    }
-  }
-
-  _loadResourcesAsync = async () => {
-    return Promise.all([
-      Asset.loadAsync([require('./assets/images/banner.jpg')]),
+  loadResourcesAsync = async () => {
+    Promise.all([
+      Asset.loadAsync([Banner]),
       Font.loadAsync({ ...Ionicons.font })
     ]);
   };
 
-  _handleLoadingError = error => {
+  handleLoadingError = error => {
     console.warn(error);
   };
 
-  _handleFinishLoading = () => {
+  handleFinishLoading = () => {
     this.setState({ isLoadingComplete: true });
   };
+
+  render() {
+    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+      return (
+        <AppLoading
+          startAsync={this.loadResourcesAsync}
+          onError={this.handleLoadingError}
+          onFinish={this.handleFinishLoading}
+        />
+      );
+    }
+
+    return (
+      <View style={styles.container}>
+        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+        {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
+        <RootNavigation />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   statusBarUnderlay: {
-    height: 24,
-    backgroundColor: 'rgba(0,0,0,0.2)'
+    height: Constants.statusBarHeight,
+    backgroundColor: Colors.cookoonBlue
   }
 });

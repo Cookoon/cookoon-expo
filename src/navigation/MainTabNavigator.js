@@ -5,28 +5,28 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import SearchScreen from '../screens/SearchScreen';
-import ReservationsScreen from '../screens/ReservationsScreen';
-import CookoonsScreen from '../screens/CookoonsScreen';
-import RequestsScreen from '../screens/RequestsScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import Home from '../screens/Home';
+import Reservations from '../screens/Reservations';
+import HostCookoons from '../screens/HostCookoons';
+import Requests from '../screens/Requests';
+import Care from '../screens/Care';
 
 export default TabNavigator(
   {
-    Search: {
-      screen: SearchScreen
+    Home: {
+      screen: Home
     },
     Reservations: {
-      screen: ReservationsScreen
+      screen: Reservations
     },
-    Cookoons: {
-      screen: CookoonsScreen
+    HostCookoons: {
+      screen: HostCookoons
     },
     Requests: {
-      screen: RequestsScreen
+      screen: Requests
     },
-    Settings: {
-      screen: SettingsScreen
+    Care: {
+      screen: Care
     }
   },
   {
@@ -35,7 +35,7 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Search':
+          case 'Home':
             iconName =
               Platform.OS === 'ios'
                 ? `ios-search${focused ? '' : '-outline'}`
@@ -47,7 +47,7 @@ export default TabNavigator(
                 ? `ios-link${focused ? '' : '-outline'}`
                 : 'md-link';
             break;
-          case 'Cookoons':
+          case 'HostCookoons':
             iconName =
               Platform.OS === 'ios'
                 ? `ios-home${focused ? '' : '-outline'}`
@@ -59,11 +59,17 @@ export default TabNavigator(
                 ? `ios-key${focused ? '' : '-outline'}`
                 : 'md-key';
             break;
-          case 'Settings':
+          case 'Care':
             iconName =
               Platform.OS === 'ios'
-                ? `ios-options${focused ? '' : '-outline'}`
-                : 'md-options';
+                ? `ios-person${focused ? '' : '-outline'}`
+                : 'md-person';
+            break;
+          default:
+            iconName =
+              Platform.OS === 'ios'
+                ? `ios-information-circle${focused ? '' : '-outline'}`
+                : 'md-information-circle';
         }
         return (
           <Ionicons

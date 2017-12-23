@@ -1,6 +1,8 @@
+const cookoonBlue = '#006f8b';
 const tintColor = '#2f95dc';
 
 export default {
+  cookoonBlue,
   tintColor,
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,

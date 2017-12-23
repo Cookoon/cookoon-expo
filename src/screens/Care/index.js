@@ -8,10 +8,14 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-export default class SettingsScreen extends Component {
+export default class Care extends Component {
   static navigationOptions = {
-    tabBarLabel: 'Contacts',
+    tabBarLabel: 'Aide',
     title: 'Vos contacts utiles'
+  };
+
+  handleHelpPress = () => {
+    WebBrowser.openBrowserAsync('https://aide.cookoon.fr');
   };
 
   render() {
@@ -30,7 +34,7 @@ export default class SettingsScreen extends Component {
 
           <View style={styles.helpContainer}>
             <TouchableOpacity
-              onPress={this._handleHelpPress}
+              onPress={this.handleHelpPress}
               style={styles.helpLink}
             >
               <Text style={styles.helpLinkText}>Centre d'aide</Text>
@@ -40,10 +44,6 @@ export default class SettingsScreen extends Component {
       </View>
     );
   }
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync('https://aide.cookoon.fr');
-  };
 }
 
 const styles = StyleSheet.create({

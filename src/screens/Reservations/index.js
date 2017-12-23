@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 
-export default class ReservationsScreen extends Component {
+export default class Reservations extends Component {
   static navigationOptions = {
     tabBarLabel: 'Réservations',
     title: 'Mes réservations'

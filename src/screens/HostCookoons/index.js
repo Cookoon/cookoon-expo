@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 
-export default class RequestsScreen extends Component {
+export default class HostCookoons extends Component {
   static navigationOptions = {
-    tabBarLabel: 'Demandes',
-    title: 'Demandes de réservation'
+    tabBarLabel: 'Cookoons',
+    title: 'Mes Cookoons'
   };
 
   render() {
@@ -15,9 +15,7 @@ export default class RequestsScreen extends Component {
           contentContainerStyle={styles.contentContainer}
         >
           <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>
-              Vos dernières demandes de réservation
-            </Text>
+            <Text style={styles.getStartedText}>Gérez vos Cookoons</Text>
           </View>
         </ScrollView>
       </View>
