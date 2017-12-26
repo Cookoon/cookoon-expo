@@ -3,7 +3,7 @@ import { Button, StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-import Colors from '../../../../constants/Colors';
+import Colors from '../../../../../../constants/Colors';
 
 export default class ButtonAddress extends Component {
   state = {

@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Dimensions, Image, ScrollView, StyleSheet } from 'react-native';
 
 import Banner from '../../assets/images/banner.jpg';
 
-import ButtonAddress from './components/ButtonAddress';
-import ButtonPeople from './components/ButtonPeople';
-import ButtonDateTimePicker from './components/ButtonDateTimePicker';
-import ButtonDuration from './components/ButtonDuration';
+import CookoonSearch from './components/CookoonSearch';
 
-export default class Home extends React.Component {
+export default class Home extends Component {
   static navigationOptions = {
     tabBarLabel: 'Recherche',
     header: null
@@ -18,14 +15,7 @@ export default class Home extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Image source={Banner} style={styles.welcomeImage} />
-
-        <ButtonAddress />
-
-        <ButtonPeople />
-
-        <ButtonDateTimePicker />
-
-        <ButtonDuration />
+        <CookoonSearch />
       </ScrollView>
     );
   }

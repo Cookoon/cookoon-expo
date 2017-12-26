@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Slider, StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
 
-import Colors from '../../../../constants/Colors';
+import Colors from '../../../../../../constants/Colors';
 
 export default class ButtonDuration extends Component {
   state = { duration: 2, isModalVisible: false };

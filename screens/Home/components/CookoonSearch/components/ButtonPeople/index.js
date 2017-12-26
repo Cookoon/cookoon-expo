@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Slider, StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
 
-import Colors from '../../../../constants/Colors';
+import Colors from '../../../../../../constants/Colors';
 
-export default class ButtonPeople extends Component {
-  state = { people: 4, isModalVisible: false };
+import { setPeople } from '../../duck';
+
+class ButtonPeople extends Component {
+  state = { isModalVisible: false };
 
   showModal = () => this.setState({ isModalVisible: true });
 
@@ -15,7 +18,7 @@ export default class ButtonPeople extends Component {
     return (
       <View style={styles.container}>
         <Button
-          title={`Pour ${this.state.people} personnes`}
+          title={`Pour ${this.props.people} personnes`}
           onPress={this.showModal}
         />
         <Modal
@@ -26,14 +29,14 @@ export default class ButtonPeople extends Component {
           style={styles.modal}
         >
           <Text style={styles.modalText}>
-            Pour {this.state.people} personnes
+            Pour {this.props.people} personnes
           </Text>
           <Slider
             minimumValue={2}
             maximumValue={8}
             step={1}
-            value={this.state.people}
-            onValueChange={people => this.setState({ people })}
+            value={this.props.people}
+            onValueChange={people => this.props.setPeople(people)}
             onSlidingComplete={this.hideModal}
           />
         </Modal>
@@ -54,3 +57,9 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+function mapStateToProps(state) {
+  return { people: state.cookoonSearch.people };
+}
+
+export default connect(mapStateToProps, { setPeople })(ButtonPeople);

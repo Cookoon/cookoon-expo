@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Constants, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
+import { Provider } from 'react-redux';
 
 import Colors from './constants/Colors';
 import Banner from './assets/images/banner.jpg';
 
+import store from './store';
 import RootNavigation from './navigation/RootNavigation';
 
 export default class App extends Component {
@@ -40,11 +42,15 @@ export default class App extends Component {
     }
 
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
-        <RootNavigation />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          {Platform.OS === 'android' && (
+            <View style={styles.statusBarUnderlay} />
+          )}
+          <RootNavigation />
+        </View>
+      </Provider>
     );
   }
 }
