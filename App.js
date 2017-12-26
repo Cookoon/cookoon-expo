@@ -3,10 +3,10 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Constants, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 
-import Colors from './src/constants/Colors';
-import Banner from './src/assets/images/banner.jpg';
+import Colors from './constants/Colors';
+import Banner from './assets/images/banner.jpg';
 
-import RootNavigation from './src/navigation/RootNavigation';
+import RootNavigation from './navigation/RootNavigation';
 
 export default class App extends Component {
   state = {
