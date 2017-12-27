@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Slider, StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
 
-import Colors from '../../../../../../constants/Colors';
+import Colors from 'constants/Colors';
 
-export default class ButtonDuration extends Component {
-  state = { duration: 2, isModalVisible: false };
+import { setDuration } from '../../duck';
+
+class ButtonDuration extends Component {
+  state = { isModalVisible: false };
 
   showModal = () => this.setState({ isModalVisible: true });
 
@@ -15,7 +18,7 @@ export default class ButtonDuration extends Component {
     return (
       <View style={styles.container}>
         <Button
-          title={`Pendant ${this.state.duration} heures`}
+          title={`Pendant ${this.props.duration} heures`}
           onPress={this.showModal}
         />
         <Modal
@@ -26,14 +29,14 @@ export default class ButtonDuration extends Component {
           style={styles.modal}
         >
           <Text style={styles.modalText}>
-            Pendant {this.state.duration} heures
+            Pendant {this.props.duration} heures
           </Text>
           <Slider
             minimumValue={1}
             maximumValue={5}
             step={1}
-            value={this.state.duration}
-            onValueChange={duration => this.setState({ duration })}
+            value={this.props.duration}
+            onValueChange={duration => this.props.setDuration(duration)}
             onSlidingComplete={this.hideModal}
           />
         </Modal>
@@ -54,3 +57,9 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+function mapStateToProps(state) {
+  return { duration: state.cookoonSearch.duration };
+}
+
+export default connect(mapStateToProps, { setDuration })(ButtonDuration);

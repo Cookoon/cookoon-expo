@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
+import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-import Colors from '../../../../../../constants/Colors';
+import Colors from 'constants/Colors';
 
-export default class ButtonAddress extends Component {
-  state = {
-    address: '',
-    isModalVisible: false
-  };
+import { setAddress } from '../../duck';
+
+class ButtonAddress extends Component {
+  state = { isModalVisible: false };
 
   showModal = () => this.setState({ isModalVisible: true });
 
   hideModal = () => this.setState({ isModalVisible: false });
 
   handleAddressPicked = data => {
-    this.setState({ address: data.description });
+    this.props.setAddress(data.description);
     this.hideModal();
   };
 
@@ -24,7 +24,7 @@ export default class ButtonAddress extends Component {
     return (
       <View style={styles.container}>
         <Button
-          title={this.state.address || 'Toutes les adresses'}
+          title={this.props.address || 'Toutes les adresses'}
           onPress={this.showModal}
         />
 
@@ -43,7 +43,7 @@ export default class ButtonAddress extends Component {
             listViewDisplayed="auto"
             renderDescription={row => row.description}
             onPress={this.handleAddressPicked}
-            getDefaultValue={() => ''}
+            getDefaultValue={() => this.props.address}
             query={{
               key: 'AIzaSyB0L5dYH7Usl-qcLmg84yWvlO2YVML3jd4',
               origin: 'app.cookoon.fr',
@@ -59,7 +59,7 @@ export default class ButtonAddress extends Component {
                 fontWeight: 'bold'
               },
               predefinedPlacesDescription: {
-                color: '#1faadb'
+                color: Colors.cookoonBlue
               }
             }}
             currentLocation
@@ -82,3 +82,9 @@ const styles = StyleSheet.create({
     borderRadius: 5
   }
 });
+
+function mapStateToProps(state) {
+  return { address: state.cookoonSearch.address };
+}
+
+export default connect(mapStateToProps, { setAddress })(ButtonAddress);

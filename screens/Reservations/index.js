@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
-export default class Reservations extends Component {
+class Reservations extends Component {
   static navigationOptions = {
     tabBarLabel: 'Réservations',
     title: 'Mes réservations'
   };
+
+  renderSearch() {
+    const {
+      address,
+      people,
+      formattedDateTime,
+      duration
+    } = this.props.cookoonSearch;
+
+    if (address && formattedDateTime) {
+      return (
+        <Text style={styles.getStartedText}>
+          Vous cherchez un Cookoon à {address} pour {people} personnes, le{' '}
+          {formattedDateTime} pendant {duration} heures.
+        </Text>
+      );
+    }
+
+    return null;
+  }
 
   render() {
     return (
@@ -18,6 +39,8 @@ export default class Reservations extends Component {
             <Text style={styles.getStartedText}>
               Retrouvez toutes vos réservation
             </Text>
+
+            {this.renderSearch()}
           </View>
         </ScrollView>
       </View>
@@ -44,3 +67,9 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+function mapStateToProps(state) {
+  return { cookoonSearch: state.cookoonSearch };
+}
+
+export default connect(mapStateToProps)(Reservations);

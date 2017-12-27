@@ -3,7 +3,7 @@ import { Button, Slider, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
 
-import Colors from '../../../../../../constants/Colors';
+import Colors from 'constants/Colors';
 
 import { setPeople } from '../../duck';
 

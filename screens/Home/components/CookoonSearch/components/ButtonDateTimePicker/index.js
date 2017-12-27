@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
-import moment from 'moment';
-import 'moment/locale/fr';
+import { connect } from 'react-redux';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
-export default class ButtonDateTimePicker extends Component {
-  state = {
-    dateTime: null,
-    formattedDateTime: '',
-    isDateTimePickerVisible: false
-  };
+import { setDateTime } from '../../duck';
+
+class ButtonDateTimePicker extends Component {
+  state = { isDateTimePickerVisible: false };
 
   showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
 
   hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
   handleDatePicked = dateTime => {
-    const formattedDateTime = moment(dateTime)
-      .locale('fr')
-      .format('Do MMMM à HH[h]mm');
-    this.setState({ dateTime, formattedDateTime });
+    this.props.setDateTime(dateTime);
     this.hideDateTimePicker();
   };
 
@@ -27,12 +21,15 @@ export default class ButtonDateTimePicker extends Component {
     return (
       <View style={styles.container}>
         <Button
-          title={this.state.formattedDateTime || 'Toutes les dates'}
+          title={this.props.formattedDateTime || 'Toutes les dates'}
           onPress={this.showDateTimePicker}
         />
         <DateTimePicker
           mode="datetime"
           isVisible={this.state.isDateTimePickerVisible}
+          titleIOS="Choisissez une date"
+          confirmTextIOS="Confirmer"
+          cancelTextIOS="Annuler"
           onConfirm={this.handleDatePicked}
           onCancel={this.hideDateTimePicker}
         />
@@ -46,3 +43,9 @@ const styles = StyleSheet.create({
     margin: 5
   }
 });
+
+function mapStateToProps(state) {
+  return { formattedDateTime: state.cookoonSearch.formattedDateTime };
+}
+
+export default connect(mapStateToProps, { setDateTime })(ButtonDateTimePicker);
