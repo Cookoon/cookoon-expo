@@ -16,7 +16,7 @@ export default class Requests extends Component {
         >
           <View style={styles.getStartedContainer}>
             <Text style={styles.getStartedText}>
-              Vos dernières demandes de réservation
+              Vos dernières demandes de réservation.
             </Text>
           </View>
         </ScrollView>

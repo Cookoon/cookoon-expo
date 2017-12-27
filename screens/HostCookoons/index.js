@@ -15,7 +15,7 @@ export default class HostCookoons extends Component {
           contentContainerStyle={styles.contentContainer}
         >
           <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>Gérez vos Cookoons</Text>
+            <Text style={styles.getStartedText}>Gérez vos Cookoons.</Text>
           </View>
         </ScrollView>
       </View>

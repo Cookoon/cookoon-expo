@@ -25,7 +25,12 @@ class Reservations extends Component {
       );
     }
 
-    return null;
+    return (
+      <Text style={styles.getStartedText}>
+        Vous n'avez pas de recherche en cours, faites-en une dans l'onglet
+        Recherche.
+      </Text>
+    );
   }
 
   render() {
@@ -37,7 +42,7 @@ class Reservations extends Component {
         >
           <View style={styles.getStartedContainer}>
             <Text style={styles.getStartedText}>
-              Retrouvez toutes vos réservation
+              Retrouvez toutes vos réservations.
             </Text>
 
             {this.renderSearch()}
@@ -61,6 +66,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 50
   },
   getStartedText: {
+    marginBottom: 20,
     fontSize: 17,
     color: 'rgba(96,100,109, 1)',
     lineHeight: 24,
