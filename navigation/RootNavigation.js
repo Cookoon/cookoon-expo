@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 
+import Auth from '../screens/Auth';
 import MainTabNavigator from './MainTabNavigator';
 
-const RootStackNavigator = StackNavigator(
-  {
-    Main: {
-      screen: MainTabNavigator
-    }
+const RootStackNavigator = StackNavigator({
+  Auth: {
+    screen: Auth
   },
-  {
-    navigationOptions: () => ({
-      headerTitleStyle: {
-        fontWeight: 'normal'
-      }
-    })
+  Main: {
+    screen: MainTabNavigator
   }
-);
+});
 
 export default class RootNavigator extends Component {
   render() {
