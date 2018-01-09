@@ -9,7 +9,8 @@ import {
 import { connect } from 'react-redux';
 import { List, ListItem } from 'react-native-elements';
 
-import Banner from '../../assets/images/banner.jpg';
+import colors from 'constants/colors';
+import Banner from 'assets/images/banner.jpg';
 
 import { fetchCookoons } from './duck';
 import CookoonSearch from './components/CookoonSearch';
@@ -43,7 +44,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: colors.cream
   },
   welcomeImage: {
     width: Dimensions.get('window').width,

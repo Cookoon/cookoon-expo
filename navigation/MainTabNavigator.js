@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 
-import Colors from '../constants/Colors';
+import colors from 'constants/colors';
 
 import Home from '../screens/Home';
 import Reservations from '../screens/Reservations';
@@ -76,7 +76,7 @@ export default TabNavigator(
             name={iconName}
             size={28}
             style={{ marginBottom: -3 }}
-            color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+            color={focused ? colors.tabIconSelected : colors.tabIconDefault}
           />
         );
       }

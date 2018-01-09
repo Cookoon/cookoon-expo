@@ -11,6 +11,7 @@ import { WebBrowser } from 'expo';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 
+import colors from 'constants/colors';
 import { signOut } from '../Auth/duck';
 
 class Care extends Component {
@@ -66,7 +67,7 @@ class Care extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: colors.cream
   },
   contentContainer: {
     paddingTop: 30

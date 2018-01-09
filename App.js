@@ -4,8 +4,8 @@ import { AppLoading, Asset, Constants, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import { Provider } from 'react-redux';
 
-import Colors from './constants/Colors';
-import Banner from './assets/images/banner.jpg';
+import colors from 'constants/colors';
+import Banner from 'assets/images/banner.jpg';
 
 import store from './store';
 import RootNavigation from './navigation/RootNavigation';
@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
   },
   statusBarUnderlay: {
     height: Constants.statusBarHeight,
-    backgroundColor: Colors.cookoonBlue
+    backgroundColor: colors.cookoonBlue
   }
 });

@@ -3,7 +3,7 @@ import { Button, Slider, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
 
-import Colors from 'constants/Colors';
+import colors from 'constants/colors';
 
 import { setPeople } from '../../duck';
 
@@ -23,7 +23,7 @@ class ButtonPeople extends Component {
         />
         <Modal
           isVisible={this.state.isModalVisible}
-          backdropColor={Colors.cookoonBlue}
+          backdropColor={colors.cookoonBlue}
           onBackButtonPress={this.hideModal}
           onBackdropPress={this.hideModal}
           style={styles.modal}

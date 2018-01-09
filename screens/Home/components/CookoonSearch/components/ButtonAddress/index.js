@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Modal from 'react-native-modal';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-import Colors from 'constants/Colors';
+import colors from 'constants/colors';
 
 import { setAddress } from '../../duck';
 
@@ -30,7 +30,7 @@ class ButtonAddress extends Component {
 
         <Modal
           isVisible={this.state.isModalVisible}
-          backdropColor={Colors.cookoonBlue}
+          backdropColor={colors.cookoonBlue}
           onBackButtonPress={this.hideModal}
           onBackdropPress={this.hideModal}
           style={styles.modal}
@@ -59,7 +59,7 @@ class ButtonAddress extends Component {
                 fontWeight: 'bold'
               },
               predefinedPlacesDescription: {
-                color: Colors.cookoonBlue
+                color: colors.cookoonBlue
               }
             }}
             currentLocation

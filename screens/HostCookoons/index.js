@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 
+import colors from 'constants/colors';
+
 export default class HostCookoons extends Component {
   static navigationOptions = {
     tabBarLabel: 'Cookoons',
@@ -26,7 +28,7 @@ export default class HostCookoons extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: colors.cream
   },
   contentContainer: {
     paddingTop: 30

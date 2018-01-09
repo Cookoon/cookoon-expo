@@ -17,7 +17,7 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 export const fetchCookoons = () => async dispatch => {
   try {
-    const { data } = await axios.get(`${env.apiUrl}/cookoons`);
+    const { data } = await axios.get(`${env.API_BASE_URL}/cookoons`);
     dispatch({ type: FETCH_COOKOONS, payload: data });
   } catch (error) {
     console.error(error);

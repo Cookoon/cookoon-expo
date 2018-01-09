@@ -10,6 +10,7 @@
       "module-resolver",
       {
         "alias": {
+          "assets": "./assets",
           "constants": "./constants"
         }
       }

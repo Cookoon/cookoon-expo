@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
+import colors from 'constants/colors';
+
 class Reservations extends Component {
   static navigationOptions = {
     tabBarLabel: 'Réservations',
@@ -56,7 +58,7 @@ class Reservations extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: colors.cream
   },
   contentContainer: {
     paddingTop: 30

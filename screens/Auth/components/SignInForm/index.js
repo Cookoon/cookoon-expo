@@ -12,7 +12,7 @@ class SignInForm extends Component {
   handleSubmit = async values => {
     try {
       const { headers } = await axios.post(
-        `${env.serverUrl}/users/sign_in.json`,
+        `${env.BASE_URL}/users/sign_in.json`,
         {
           user: {
             email: values.email,
