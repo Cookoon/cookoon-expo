@@ -5,13 +5,14 @@ import { NavigationActions } from 'react-navigation';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import axios from 'axios';
 
+import env from 'constants/env';
 import { setJwt } from '../../duck';
 
 class SignInForm extends Component {
   handleSubmit = async values => {
     try {
       const { headers } = await axios.post(
-        'http://localhost:3000/users/sign_in.json',
+        `${env.serverUrl}/users/sign_in.json`,
         {
           user: {
             email: values.email,
