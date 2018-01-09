@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Button,
   ScrollView,
   View,
   Text,
@@ -7,8 +8,12 @@ import {
   StyleSheet
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
-export default class Care extends Component {
+import { signOut } from '../Auth/duck';
+
+class Care extends Component {
   static navigationOptions = {
     tabBarLabel: 'Aide',
     title: 'Vos contacts utiles'
@@ -16,6 +21,16 @@ export default class Care extends Component {
 
   handleHelpPress = () => {
     WebBrowser.openBrowserAsync('https://aide.cookoon.fr');
+  };
+
+  handleSignOut = () => {
+    this.props.signOut();
+
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: 'Auth' })]
+    });
+    this.props.navigation.dispatch(resetAction);
   };
 
   render() {
@@ -40,6 +55,8 @@ export default class Care extends Component {
               <Text style={styles.helpLinkText}>Centre d'aide</Text>
             </TouchableOpacity>
           </View>
+
+          <Button title="Se déconnecter" onPress={this.handleSignOut} />
         </ScrollView>
       </View>
     );
@@ -76,3 +93,5 @@ const styles = StyleSheet.create({
     color: '#2e78b7'
   }
 });
+
+export default connect(null, { signOut })(Care);
