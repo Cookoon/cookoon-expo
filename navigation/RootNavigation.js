@@ -13,7 +13,10 @@ const RootStackNavigator = StackNavigator({
     screen: MainTabNavigator
   },
   CookoonsShow: {
-    screen: CookoonsShow
+    screen: CookoonsShow,
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.state.params.name
+    })
   }
 });
 

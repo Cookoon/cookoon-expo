@@ -26,7 +26,7 @@ class Home extends Component {
 
   onButtonPress(cookoon) {
     this.props.selectCookoon(cookoon);
-    this.props.navigation.navigate('CookoonsShow');
+    this.props.navigation.navigate('CookoonsShow', { name: cookoon.name });
   }
 
   renderCookoonList() {
