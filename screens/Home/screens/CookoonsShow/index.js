@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
-import { Button, ScrollView, Text } from 'react-native';
+import { Button, Image, ScrollView, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Card } from 'react-native-elements';
+import Swiper from 'react-native-swiper';
 
 class CookoonsShow extends Component {
+  renderSlides(photos) {
+    return photos.map((photo, i) => (
+      <View
+        key={i}
+        style={{
+          flex: 1,
+          justifyContent: 'center'
+        }}
+      >
+        <Image
+          resizeMode="stretch"
+          style={{
+            flex: 1
+          }}
+          source={{ uri: photo.url }}
+        />
+      </View>
+    ));
+  }
+
   render() {
     const { selectedCookoon } = this.props;
     return (
       <ScrollView>
-        <Card
-          key={selectedCookoon.id}
-          title={selectedCookoon.name}
-          image={{ uri: selectedCookoon.photos[0].url }}
-        >
+        <Swiper height={240} loop autoplay autoplayTimeout={5}>
+          {this.renderSlides(selectedCookoon.photos)}
+        </Swiper>
+
+        <Card key={selectedCookoon.id} title={selectedCookoon.name}>
           <Text style={{ marginBottom: 10 }}>
             Ce Cookoon de {selectedCookoon.surface} est idéal pour{' '}
             {selectedCookoon.capacity}. Il est situé au{' '}
