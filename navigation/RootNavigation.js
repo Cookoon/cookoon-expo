@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation';
 
 import Auth from '../screens/Auth';
 import MainTabNavigator from './MainTabNavigator';
+import CookoonsShow from '../screens/Home/screens/CookoonsShow';
 
 const RootStackNavigator = StackNavigator({
   Auth: {
@@ -10,6 +11,9 @@ const RootStackNavigator = StackNavigator({
   },
   Main: {
     screen: MainTabNavigator
+  },
+  CookoonsShow: {
+    screen: CookoonsShow
   }
 });
 
