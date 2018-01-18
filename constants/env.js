@@ -9,8 +9,8 @@ export default {
     API_BASE_URL: 'http://localhost:3000/api'
   },
   staging: {
-    BASE_URL: 'https://cookoon-staging.herokuapp.com',
-    API_BASE_URL: 'https://cookoon-staging.herokuapp.com/api'
+    BASE_URL: 'https://cookoon-api.herokuapp.com',
+    API_BASE_URL: 'https://cookoon-api.herokuapp.com/api'
   },
   production: {
     BASE_URL: 'https://app.cookoon.fr',
