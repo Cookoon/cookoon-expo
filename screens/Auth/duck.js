@@ -12,14 +12,12 @@ const INITIAL_STATE = {
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SET_JWT:
-      axios.defaults.headers.common.Authorization = `Bearer ${action.payload}`;
       return {
         ...state,
         jwt: action.payload,
         exp: jwtDecode(action.payload).exp
       };
     case SIGN_OUT:
-      delete axios.defaults.headers.common.Authorization;
       return INITIAL_STATE;
     default:
       return state;
@@ -27,9 +25,11 @@ export default function reducer(state = INITIAL_STATE, action) {
 }
 
 export function setJwt(jwt) {
+  axios.defaults.headers.common.Authorization = `Bearer ${jwt}`;
   return { type: SET_JWT, payload: jwt };
 }
 
 export function signOut() {
+  delete axios.defaults.headers.common.Authorization;
   return { type: SIGN_OUT };
 }
