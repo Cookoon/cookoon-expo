@@ -15,7 +15,7 @@ class CookoonsShow extends Component {
         }}
       >
         <Image
-          resizeMode="stretch"
+          resizeMode="cover"
           style={{
             flex: 1
           }}
