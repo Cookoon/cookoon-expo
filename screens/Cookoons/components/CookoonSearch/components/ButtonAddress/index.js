@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
+import { Button } from 'react-native-elements';
 import Modal from 'react-native-modal';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import colors from 'constants/colors';
 
+import { fetchCookoons } from 'redux/modules/cookoons';
 import { setAddress } from 'redux/modules/cookoons/search';
 
 class ButtonAddress extends Component {
@@ -17,6 +19,7 @@ class ButtonAddress extends Component {
 
   handleAddressPicked = data => {
     this.props.setAddress(data.description);
+    this.props.fetchCookoons();
     this.hideModal();
   };
 
@@ -24,8 +27,24 @@ class ButtonAddress extends Component {
     return (
       <View style={styles.container}>
         <Button
+          icon={
+            this.props.address
+              ? {}
+              : { name: 'search', color: colors.cookoonBlue }
+          }
           title={this.props.address || 'Toutes les adresses'}
           onPress={this.showModal}
+          outline={!this.props.address}
+          borderRadius={7}
+          backgroundColor={this.props.address ? colors.cookoonBlue : 'white'}
+          color={this.props.address ? 'white' : colors.cookoonBlue}
+          containerViewStyle={{
+            marginTop: 5,
+            marginBottom: 10,
+            marginLeft: 5,
+            marginRight: 5
+          }}
+          buttonStyle={{ padding: 5 }}
         />
 
         <Modal
@@ -65,6 +84,7 @@ class ButtonAddress extends Component {
             currentLocation
             currentLocationLabel="Ma position"
             nearbyPlacesAPI="GoogleReverseGeocoding"
+            enablePoweredByContainer={false}
             debounce={200}
           />
         </Modal>
@@ -74,9 +94,7 @@ class ButtonAddress extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 5
-  },
+  container: {},
   modal: {
     backgroundColor: 'white',
     borderRadius: 5
@@ -87,4 +105,6 @@ function mapStateToProps(state) {
   return { address: state.cookoons.search.address };
 }
 
-export default connect(mapStateToProps, { setAddress })(ButtonAddress);
+export default connect(mapStateToProps, { setAddress, fetchCookoons })(
+  ButtonAddress
+);

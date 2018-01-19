@@ -11,7 +11,7 @@ export default class Auth extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
         <SignInForm {...this.props} />
       </ScrollView>
     );

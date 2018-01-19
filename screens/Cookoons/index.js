@@ -6,6 +6,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableWithoutFeedback,
   View
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -29,43 +30,53 @@ class Home extends Component {
   }
 
   renderCookoonList() {
-    return (
-      <View>
-        {this.props.cookoons.map(cookoon => (
+    if (!this.props.cookoons.length) {
+      return (
+        <TouchableWithoutFeedback onPress={this.props.fetchCookoons}>
           <Card
-            key={cookoon.id}
-            title={cookoon.name}
-            image={{ uri: cookoon.photos[0].url }}
-          >
-            <Text style={{ marginBottom: 10 }}>{cookoon.description}</Text>
-            <Button
-              icon={{ name: 'event' }}
-              backgroundColor="#03A9F4"
-              fontFamily="Lato"
-              buttonStyle={{
-                borderRadius: 0,
-                marginLeft: 0,
-                marginRight: 0,
-                marginBottom: 0
-              }}
-              title="Voir"
-              onPress={() => this.onButtonPress(cookoon)}
-            />
-          </Card>
-        ))}
-      </View>
-    );
+            title="Tous les Cookoons"
+            image={{ uri: 'https://cookoon.fr/img/aboukir/aboukir.jpg' }}
+            containerStyle={{ width: 200 }}
+          />
+        </TouchableWithoutFeedback>
+      );
+    } else {
+      return (
+        <View>
+          {this.props.cookoons.map(cookoon => (
+            <Card
+              key={cookoon.id}
+              title={cookoon.name}
+              image={{ uri: cookoon.photos[0].url }}
+            >
+              <Text style={{ marginBottom: 10 }}>{cookoon.description}</Text>
+              <Button
+                icon={{ name: 'event' }}
+                backgroundColor="#03A9F4"
+                fontFamily="Lato"
+                buttonStyle={{
+                  borderRadius: 0,
+                  marginLeft: 0,
+                  marginRight: 0,
+                  marginBottom: 0
+                }}
+                title="Voir"
+                onPress={() => this.onButtonPress(cookoon)}
+              />
+            </Card>
+          ))}
+        </View>
+      );
+    }
   }
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
         <Image source={Banner} style={styles.welcomeImage} />
+
         <CookoonSearch />
-        <Button
-          title="Afficher les Cookoons"
-          onPress={this.props.fetchCookoons}
-        />
+
         {this.renderCookoonList()}
       </ScrollView>
     );

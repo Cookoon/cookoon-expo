@@ -31,7 +31,7 @@ class SignInForm extends Component {
     } catch (error) {
       this.props.change('password', '');
       throw new SubmissionError({
-        _error: error.response.data.message
+        _error: error.response.data.error
       });
     }
   };
@@ -55,7 +55,7 @@ class SignInForm extends Component {
   );
 
   render() {
-    const { error, handleSubmit, pristine, reset, submitting } = this.props;
+    const { error, handleSubmit, submitting } = this.props;
 
     return (
       <View style={styles.container}>
@@ -69,6 +69,7 @@ class SignInForm extends Component {
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
+          autoFocus
         />
         <Field
           name="password"
@@ -78,14 +79,9 @@ class SignInForm extends Component {
         />
         <View>
           <Button
-            title={submitting ? '...' : 'Se connecter'}
+            title={submitting ? 'Connexion...' : 'Se connecter'}
             disabled={submitting}
             onPress={handleSubmit(this.handleSubmit)}
-          />
-          <Button
-            title="Effacer"
-            disabled={pristine || submitting}
-            onPress={reset}
           />
         </View>
       </View>

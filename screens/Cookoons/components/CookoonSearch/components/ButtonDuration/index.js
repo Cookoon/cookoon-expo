@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Slider, StyleSheet, Text, View } from 'react-native';
+import { Slider, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import { Button } from 'react-native-elements';
 import Modal from 'react-native-modal';
 
 import colors from 'constants/colors';
@@ -20,6 +21,12 @@ class ButtonDuration extends Component {
         <Button
           title={`Pendant ${this.props.duration} heures`}
           onPress={this.showModal}
+          outline={!this.props.duration}
+          borderRadius={7}
+          backgroundColor={this.props.duration ? colors.cookoonBlue : 'white'}
+          color={this.props.duration ? 'white' : colors.cookoonBlue}
+          containerViewStyle={{ marginLeft: 5, marginRight: 5 }}
+          buttonStyle={{ padding: 5 }}
         />
         <Modal
           isVisible={this.state.isModalVisible}
@@ -46,9 +53,7 @@ class ButtonDuration extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 5
-  },
+  container: {},
   modal: {
     backgroundColor: 'white',
     borderRadius: 5
