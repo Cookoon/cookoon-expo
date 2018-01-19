@@ -61,7 +61,7 @@ class CookoonsShow extends Component {
 }
 
 function mapStateToProps(state) {
-  return { selectedCookoon: state.selectedCookoon };
+  return { selectedCookoon: state.cookoons.show };
 }
 
 export default connect(mapStateToProps)(CookoonsShow);

@@ -1,10 +1,10 @@
 import moment from 'moment';
 import 'moment/locale/fr';
 
-const SET_ADDRESS = 'cookoon-expo/cookoonSearch/SET_ADDRESS';
-const SET_PEOPLE = 'cookoon-expo/cookoonSearch/SET_PEOPLE';
-const SET_DATE_TIME = 'cookoon-expo/cookoonSearch/SET_DATE_TIME';
-const SET_DURATION = 'cookoon-expo/cookoonSearch/SET_DURATION';
+const SET_ADDRESS = 'cookoon-expo/cookoonsSearch/SET_ADDRESS';
+const SET_PEOPLE = 'cookoon-expo/cookoonsSearch/SET_PEOPLE';
+const SET_DATE_TIME = 'cookoon-expo/cookoonsSearch/SET_DATE_TIME';
+const SET_DURATION = 'cookoon-expo/cookoonsSearch/SET_DURATION';
 
 const INITIAL_STATE = {
   address: '',

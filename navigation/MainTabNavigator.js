@@ -5,7 +5,7 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import colors from 'constants/colors';
 
-import Home from '../screens/Home';
+import Cookoons from '../screens/Cookoons';
 import Reservations from '../screens/Reservations';
 import HostCookoons from '../screens/HostCookoons';
 import Requests from '../screens/Requests';
@@ -13,8 +13,8 @@ import Care from '../screens/Care';
 
 export default TabNavigator(
   {
-    Home: {
-      screen: Home
+    Cookoons: {
+      screen: Cookoons
     },
     Reservations: {
       screen: Reservations
@@ -35,7 +35,7 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
+          case 'Cookoons':
             iconName =
               Platform.OS === 'ios'
                 ? `ios-search${focused ? '' : '-outline'}`

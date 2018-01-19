@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 
-import Auth from '../screens/Auth';
+import SignIn from 'screens/Auth/SignIn';
 import MainTabNavigator from './MainTabNavigator';
-import CookoonsShow from '../screens/Home/screens/CookoonsShow';
+import CookoonsShow from '../screens/Cookoons/show';
 
 const RootStackNavigator = StackNavigator({
   Auth: {
-    screen: Auth
+    screen: SignIn
   },
   Main: {
     screen: MainTabNavigator

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import colors from 'constants/colors';
 import Banner from 'assets/images/banner.jpg';
 
-import store from './store';
+import store from 'redux/store';
 import RootNavigation from './navigation/RootNavigation';
 
 export default class App extends Component {

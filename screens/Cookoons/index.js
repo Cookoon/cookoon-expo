@@ -14,8 +14,7 @@ import { Card } from 'react-native-elements';
 import colors from 'constants/colors';
 import Banner from 'assets/images/banner.jpg';
 
-import { fetchCookoons } from './duck';
-import { selectCookoon } from './screens/CookoonsShow/duck';
+import { fetchCookoons, selectCookoon } from 'redux/modules/cookoons';
 import CookoonSearch from './components/CookoonSearch';
 
 class Home extends Component {
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return { cookoons: state.cookoons };
+  return { cookoons: state.cookoons.index };
 }
 
 export default connect(mapStateToProps, { fetchCookoons, selectCookoon })(Home);

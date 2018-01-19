@@ -3,7 +3,7 @@ import { Button, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
-import { setDateTime } from '../../duck';
+import { setDateTime } from 'redux/modules/cookoons/search';
 
 class ButtonDateTimePicker extends Component {
   state = { isDateTimePickerVisible: false };
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return { formattedDateTime: state.cookoonSearch.formattedDateTime };
+  return { formattedDateTime: state.cookoons.search.formattedDateTime };
 }
 
 export default connect(mapStateToProps, { setDateTime })(ButtonDateTimePicker);

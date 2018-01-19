@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 
 import colors from 'constants/colors';
-import { signOut } from '../Auth/duck';
+import { signOut } from 'redux/modules/auth';
 
 class Care extends Component {
   static navigationOptions = {

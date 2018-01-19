@@ -5,7 +5,7 @@ import Modal from 'react-native-modal';
 
 import colors from 'constants/colors';
 
-import { setPeople } from '../../duck';
+import { setPeople } from 'redux/modules/cookoons/search';
 
 class ButtonPeople extends Component {
   state = { isModalVisible: false };
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return { people: state.cookoonSearch.people };
+  return { people: state.cookoons.search.people };
 }
 
 export default connect(mapStateToProps, { setPeople })(ButtonPeople);

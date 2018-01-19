@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return { cookoonSearch: state.cookoonSearch };
+  return { cookoonSearch: state.cookoons.search };
 }
 
 export default connect(mapStateToProps)(Reservations);

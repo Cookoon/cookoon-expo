@@ -6,7 +6,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 
 import colors from 'constants/colors';
 
-import { setAddress } from '../../duck';
+import { setAddress } from 'redux/modules/cookoons/search';
 
 class ButtonAddress extends Component {
   state = { isModalVisible: false };
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return { address: state.cookoonSearch.address };
+  return { address: state.cookoons.search.address };
 }
 
 export default connect(mapStateToProps, { setAddress })(ButtonAddress);

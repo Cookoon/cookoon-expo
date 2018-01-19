@@ -5,7 +5,7 @@ import Modal from 'react-native-modal';
 
 import colors from 'constants/colors';
 
-import { setDuration } from '../../duck';
+import { setDuration } from 'redux/modules/cookoons/search';
 
 class ButtonDuration extends Component {
   state = { isModalVisible: false };
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  return { duration: state.cookoonSearch.duration };
+  return { duration: state.cookoons.search.duration };
 }
 
 export default connect(mapStateToProps, { setDuration })(ButtonDuration);

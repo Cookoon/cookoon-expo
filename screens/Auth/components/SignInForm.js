@@ -6,7 +6,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 import axios from 'axios';
 
 import env from 'constants/env';
-import { setJwt } from '../../duck';
+import { setJwt } from 'redux/modules/auth';
 
 class SignInForm extends Component {
   handleSubmit = async values => {
